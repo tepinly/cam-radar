@@ -2,7 +2,9 @@ import cv2
 import math
 import time
 import numpy as np
+import requests
 
+URL = "https://localhost:3000"
 limit = 60 #km/hr
 
 file = open("./record.txt","w")

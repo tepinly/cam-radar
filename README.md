@@ -1,6 +1,6 @@
 # Cam-radar Graduation Project
 
-## Create those folders after cloning the repo
+## Inside the radar dir, create these sub-dirs
 
 - captures
 - exceeded
