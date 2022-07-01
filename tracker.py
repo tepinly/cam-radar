@@ -4,7 +4,6 @@ import time
 import numpy as np
 import requests
 
-URL = "https://localhost:3000"
 limit = 60 #km/hr
 
 file = open("./record.txt","w")
@@ -103,6 +102,12 @@ class EuclideanDistTracker:
             cv2.imwrite(file, crop_img)
             self.count += 1
             filet = open("./record.txt", "a")
+            requests.post("http://localhost:3000/cars/create", json={
+              "id": id,
+              "speed": int(sp),
+              "plate": None,
+              "image": "../radar/captures/" + n + ".jpg"
+              })
             if(sp>limit):
                 file2 = './exceeded/' + n + '.jpg'
                 cv2.imwrite(file2, crop_img)

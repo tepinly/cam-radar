@@ -3,6 +3,7 @@ import { PrismaClient, Prisma } from "@prisma/client";
 
 const prisma = new PrismaClient();
 const app = express();
+app.use(express.json());
 const port = 3000;
 
 app.post("/cars/create", async (req, res) => {
@@ -12,7 +13,7 @@ app.post("/cars/create", async (req, res) => {
 
   if (speed > 60) {
     car = {
-      image: request.image,
+      image: request.image || null,
       plate: request.plate || null,
       violation: {
         create: {
@@ -22,12 +23,18 @@ app.post("/cars/create", async (req, res) => {
     };
   } else {
     car = {
-      image: request.image,
+      image: request.image || null,
       plate: request.plate || null,
     };
   }
 
-  const createCar = await prisma.car.create({ data: car });
+  const createCar = await prisma.car.upsert({
+    where: {
+      id: request.id,
+    },
+    update: car,
+    create: car
+  });
   res.send("Record successfully created.");
 });
 
