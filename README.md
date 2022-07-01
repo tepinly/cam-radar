@@ -1,6 +1,6 @@
 # Cam-radar Graduation Project
 
-## Inside the radar dir, create these sub-dirs
+## create these sub-dirs in the repository
 
 - captures
 - exceeded
