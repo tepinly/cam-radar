@@ -1,9 +1,23 @@
-let violations
+let violations;
 
-const getViolations = async () => { 
-  const response = await fetch("http://localhost:3000/cars/violations")
+setInterval(async () => {
+  document.getElementById("main").innerHTML = "";
+  let headRow = document.createElement("tr");
+  headRow.setAttribute("id", "head");
+  let id = document.createElement("th");
+  let speed = document.createElement("th");
+  let date = document.createElement("th");
+  id.innerText = "Id";
+  speed.innerText = "Speed";
+  date.innerText = "Date Issued";
+  document.getElementById("main").appendChild(headRow);
+  document.getElementById("head").appendChild(id);
+  document.getElementById("head").appendChild(speed);
+  document.getElementById("head").appendChild(date);
 
-  violations = await response.json()
+  violations = await fetch("http://localhost:3000/cars/violations");
+  violations = await violations.json();
+  console.log(violations);
 
   violations.map((car) => {
     let row = document.createElement("tr");
@@ -19,6 +33,4 @@ const getViolations = async () => {
     document.getElementById(`row${car.id}`).appendChild(d2);
     document.getElementById(`row${car.id}`).appendChild(d3);
   });
-}
-
-getViolations()
+}, 10000);
