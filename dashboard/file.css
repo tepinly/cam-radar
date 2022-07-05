@@ -1,0 +1,15 @@
+* {
+  font-family: sans-serif;
+  font-size: large;
+  color: #1d1d1d;
+  margin: auto;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+table, td, th {
+  text-align: start;
+  border: .15rem solid #96D4D4;
+  border-collapse: collapse;
+  padding: .4rem .6rem;
+}

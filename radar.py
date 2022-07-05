@@ -79,7 +79,6 @@ while True:
             tracker.capture(roi, x, y, h, w, s, id)
 
     # DRAW LINES
-
     cv2.line(roi, (0, 410), (960, 410), (0, 0, 255), 2)
     cv2.line(roi, (0, 430), (960, 430), (0, 0, 255), 2)
 

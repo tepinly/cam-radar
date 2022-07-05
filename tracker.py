@@ -1,6 +1,5 @@
 import cv2
 import math
-import time
 import numpy as np
 import requests
 

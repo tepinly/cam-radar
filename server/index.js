@@ -1,9 +1,11 @@
-import express from "express";
-import { PrismaClient, Prisma } from "@prisma/client";
+const express = require("express");
+const { PrismaClient } = require("@prisma/client");
+const cors = require("cors");
 
 const prisma = new PrismaClient();
 const app = express();
 app.use(express.json());
+app.use(cors());
 const port = 3000;
 
 app.post("/cars/create", async (req, res) => {
